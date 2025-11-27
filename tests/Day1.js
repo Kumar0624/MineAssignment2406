@@ -2,7 +2,7 @@ let firstName = "Kumar"
 console.log(firstName)
 console.log(typeof firstName)
 
-let companyName = "TestLeaf"
+let companyName = null
 console.log(companyName)
 console.log(typeof companyName)
 
