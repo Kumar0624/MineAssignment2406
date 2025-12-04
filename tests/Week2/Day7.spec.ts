@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+
+test(`Create a Lead in TestLeaf CRM`, async ({page}) =>{
+    await page.goto(`http://leaftaps.com/opentaps/control/main`)
+    await page.locator(`[id ="username"]`).fill(`Demosalesmanager`)
+    await page.locator(`[id="password"]`).fill(`crmsfa`)
+    await page.locator(`input`).last().click()
+    await page.locator(`#button`).click()
+    await page.locator(`//a[text()="Leads"]`).click()
+    await page.locator(`//a[text()="Create Lead"]`).click()
+    await page.locator(`#createLeadForm_companyName`).fill(`TeasLeaf`)
+    await page.locator(`[id="createLeadForm_firstName"]`).fill(`Kumar`)
+    await page.locator(`#createLeadForm_lastName`).first().fill(`M`)
+    await page.locator(`#createLeadForm_personalTitle`).fill(`Mr`)
+    await page.locator(`#createLeadForm_generalProfTitle`).fill(`QA Automation Engineer`)
+    await page.locator(`[id="createLeadForm_annualRevenue"]`).fill(`500000`)
+    await page.locator(`[id="createLeadForm_departmentName"]`).fill(`IT`)
+    await page.locator(`[id="createLeadForm_primaryPhoneNumber"]`).fill(`9876543210`)
+    await page.locator(`//input[@name="submitButton"]`).click()
+    const companyName =  page.locator(`#viewLead_companyName_sp`)
+    await expect(companyName).toContainText(`TeasLeaf`)
+    console.log("companyName verified")
+    const firstName = page.locator(`#viewLead_firstName_sp`)
+    await expect(firstName).toContainText(`Kumar`)
+    console.groupCollapsed("FirstName Verified")
+    const lastName = page.locator(`#viewLead_lastName_sp`)
+    await expect(lastName).toContainText(`M`)
+    console.log("LastName Verified")
+    const status = page.locator(`#viewLead_statusId_sp`)
+    await expect(status).toContainText(`Assigned`)
+    console.log("Status Verified")
+    const pageTitle = await page.title();
+    console.log("Page Title is :" + pageTitle);
+    await page.waitForTimeout(10000);
+})
