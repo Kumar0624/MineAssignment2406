@@ -31,5 +31,5 @@ test(`Create a Lead in TestLeaf CRM`, async ({page}) =>{
     console.log("Status Verified")
     const pageTitle = await page.title();
     console.log("Page Title is :" + pageTitle);
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(5000);
 })
