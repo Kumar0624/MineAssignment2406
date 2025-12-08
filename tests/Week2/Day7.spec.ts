@@ -33,3 +33,20 @@ test(`Create a Lead in TestLeaf CRM`, async ({page}) =>{
     console.log("Page Title is :" + pageTitle);
     await page.waitForTimeout(5000);
 })
+
+test(`Edit Lead in TestLeaf CRM`, async ({page}) =>{
+    await page.goto(`http://leaftaps.com/opentaps/control/main`)
+    await page.locator(`[id ="username"]`).fill(`Demosalesmanager`)
+    await page.locator(`[id="password"]`).fill(`crmsfa`)
+    await page.locator(`input`).last().click()
+    await page.locator(`#button`).click()
+    await page.locator(`//a[text()="Leads"]`).click()
+    await page.locator(`//a[text()="Find Leads"]`).click()
+    await page.locator(`#ext-gen248`).last().fill(`Kumar`)
+    await page.locator(`#ext-gen334`).click()
+    await page.locator(`//a[text()="11494"]`).click()
+
+    await page.waitForTimeout(5000);
+    
+
+})
