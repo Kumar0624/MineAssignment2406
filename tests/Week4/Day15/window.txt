@@ -1,0 +1,26 @@
+// in sequential maybe we get flakiness so that we can do concurrent execution
+test("interact with window handles concurrent", async({page,context}) =>{ // here we are doing parallel execution
+    await page.goto("https://www.flipkart.com/");
+    const searchBox = page.getByPlaceholder(`Search for Products, Brands and More`,{exact:true})
+    await searchBox.fill("Phone");
+    await searchBox.press("Enter");
+
+    // so this is concurrent execution method, Array of actions which are going to happen concurrently
+    // Promise.all is a method which is going to wait for all the actions to complete
+    await Promise.all([context.waitForEvent('page'),page.locator(`(//div[contains(text(),"POCO")])[1]`).click()]);
+    /* So this will basically avoid missing to capture that particular page when youre going to click that particular button */
+
+    const allPages =  context.pages() // pages() this is a method to basically capture the number of pages opened in the browser context
+    console.log(`Total number of pages opened are: ${ allPages.length}`); // to get the total number of pages opened..
+
+    // Using the index to get the particular page reference
+    /* const childPage = allPages[1]; // 0th index is parent page and 1st index is child page
+    console.log(`Child page title is ${await childPage.title()}`) */
+
+    console.log(`The parent page title is: ${await page.title()}`);
+    console.log(`The title of the child page is: ${await allPages[1].title()}`);
+    await page.bringToFront(); // is a method used to Bringing my parent page to the front
+    await page.waitForTimeout(3000)
+    await page.locator(`//span[text()="Electronics"]`).click();
+    await  page.waitForTimeout(5000);
+});
