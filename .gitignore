@@ -6,3 +6,11 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+Data/qa.env
+# Environment files
+.env
+*.env
+
+# Ignore sensitive data files
+Data/*.env
