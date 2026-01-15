@@ -8,7 +8,7 @@ class Employee {
     // Methods with parameters
     setEmployeeDetails(name: string, id: number) {  
         console.log(`Employee Name: ${name}, Employee ID: ${id}`);
-        // To access class properties inside the method use this keyword
+        // To access class properties inside the method use this keyword defined by TypeScript 
         console.log(`Browser Name: ${this.browserName}, Browser Version: ${this.browserVersion}`);
     }         
 }
