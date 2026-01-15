@@ -16,3 +16,4 @@ test(`Create a Lead in TestLeaf CRM`, async ({page}) =>{
 
 /* Page Fixture ==> It is giving the instance of the page directly from the playwright library 
 Whicha has limitation : It can only hold the opening the browser &  closing the Browser */
+
