@@ -1,0 +1,37 @@
+1. import { test as baseTest } from '@playwright/test';
+
+    test is test runner which is basically create a particular enviournment for you to run your test execution which can control our test flow 
+    Imports test from Playwright’s test library. 
+    test as baseTest means:
+        Rename test to baseTest.
+        This avoids confusion when creating a custom test later.
+    👉 Meaning:
+    We are importing Playwright’s default test and renaming it for extension.
+
+
+2. export const test = baseTest.extend({ 
+
+    Creates a new custom test by extending Playwright’s base test.
+    extend() allows you to add or override fixtures.
+    export makes this custom test available to other test files.
+    👉 Meaning:
+    We are creating our own test setup on top of Playwright’s test.
+
+
+3. page: async ({ page }, use) => {
+
+    This is a fixture override.
+    page → existing Playwright fixture.
+    ({ page }) → destructuring to extract the page object.
+    use → callback that tells Playwright when the test can run.
+    👉 Meaning:
+    We are customizing how the page fixture behaves.
+
+
+4. await use(page);
+
+    Hands control back to Playwright.
+    Executes the actual test code.
+    Ensures this page is used in the test lifecycle.
+    👉 Meaning:
+    “Setup is done, now run the test with this page.”
