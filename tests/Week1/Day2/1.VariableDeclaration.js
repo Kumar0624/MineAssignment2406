@@ -11,7 +11,7 @@ console.log(a)
 
 
 let b = 123
-// let b = 456  it is re declaration error
+// let b = 456  it is re declaration error throw error reference error
 
 b = 456 // re assignment is allowed
 console.log(b) 
@@ -25,7 +25,7 @@ console.log(c)
 
 
 // block scope
-//const b
+//const b  here initialization is mandatory we cannot leave it uninitialized
 // 
 let d  
 //
