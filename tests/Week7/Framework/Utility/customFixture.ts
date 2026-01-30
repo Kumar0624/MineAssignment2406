@@ -6,12 +6,13 @@ import { LeadPage } from '../POM/pages/4.leadPage';
 import { CreateLead } from '../POM/pages/5.createLead';
 
 type myFixtures = {
-    lopfix: LoginPage;
+    lopfix: LoginPage; // we need to mention the type 
     wpfix: WelcomePage;
     hpfix: Homepage;
     lpfix: LeadPage;
     clpfix: CreateLead;
 };
+
 // lopfix will hold page fixture as well as the object created for LoginPage
 export const test = baseTest.extend<myFixtures>({
     lopfix: async ({ page }, use) => {
