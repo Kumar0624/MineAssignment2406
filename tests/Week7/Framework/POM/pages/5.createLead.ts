@@ -11,6 +11,7 @@ export class CreateLead extends LeadPage {
         annualRevenueInput: `//input[@id='createLeadForm_annualRevenue']`,
         departmentNameInput: `//input[@id='createLeadForm_departmentName']`,
         primaryPhoneNumberInput: `//input[@id='createLeadForm_primaryPhoneNumber']`
+
     }
     async enterCompanyName() {
         await this.page1.locator(this.createLeadLocators.companyNameInput).fill("TestLeaf")
@@ -35,5 +36,9 @@ export class CreateLead extends LeadPage {
     }
     async enterPrimaryPhoneNumber() {
         await this.page1.locator(this.createLeadLocators.primaryPhoneNumberInput).fill("9876543210")
+    }
+
+    async clickCreateLeadButton() {
+        await this.page1.getByRole('button', { name: 'Create Lead' }).click();
     }
 }

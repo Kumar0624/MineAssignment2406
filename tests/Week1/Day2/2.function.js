@@ -21,4 +21,4 @@ function add(x, y) {
     return result;
 }
 
-console.log("Return Function",add(10, 20)); // so here our add function hold result value
+console.log("Return Function = ",add(10, 20)); // so here our add function hold result value

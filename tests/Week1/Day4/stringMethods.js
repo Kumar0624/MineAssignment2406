@@ -100,8 +100,10 @@ console.log(`${e.slice(6,4)}`); // returns empty string
 let i = "MicroSoft"
 // negative index
 console.log(`${i.substring(-5)}`); // substring() treats negative values as 0.
+
+console.log(`SubString = ${i.substring(2,-5)}`); // substring() treats negative values as 0.
 // swap
-console.log(`Swap = ${i.substring(6,4)}`);
+console.log(`Swap = ${i.substring(5,4)}`);
 
 // slice() supports negative values and is more powerful.
 // substring() does not support negative values and auto-swaps indexes.
