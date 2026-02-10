@@ -7,6 +7,11 @@ test("Interact with frame using URL", async({page}) =>{
   and then we can perform the actions inside that frame using that frame reference. */
   const frameurl = page.frame({url:"https://leafground.com/default.xhtml"})
   await frameurl?.locator('#Click').click();
+   /* ?. --> Optional Chaining Which means if the frame is available then the locator will perform the click action  inside the frame else it will say that as frame not found execption.
+   So here execption will be handled appropriately. 
+   It is a safety feature to avoid null pointer exception 
+    */
+  await frameurl?.locator('#Click').click();
   await page.waitForTimeout(5000);
 });
 
@@ -45,8 +50,10 @@ test("Interact with nested frames", async({page}) =>{
     const frame_Innerframe = frame_Outerframe.frameLocator(`[src="framebutton.xhtml"]`);
     const clickButton = frame_Innerframe.locator('#Click');
     await clickButton.click();
+
     const Actualtext = await clickButton.innerText();
     console.log(`The Actual text is: ${Actualtext}`);
+    
     expect(Actualtext).toContain("Hurray! You Clicked Me.");
     // Get the title of the frame
     const allFrames = page.frames();
