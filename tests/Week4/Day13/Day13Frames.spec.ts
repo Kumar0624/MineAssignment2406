@@ -28,5 +28,6 @@ test("Count and print frame titles", async ({ page }) => {
        console.log(`The title of the frame using forEach loop is : ${frameTitle}`);
     });
     await page.waitForTimeout(3000);
+
 })
 

@@ -1,8 +1,5 @@
 import {expect, test} from "@playwright/test";
 
-
-
-
 // Interact with frame using different methods
 test("Interact with frame using URL", async({page}) =>{
   await page.goto("https://leafground.com/frame.xhtml");

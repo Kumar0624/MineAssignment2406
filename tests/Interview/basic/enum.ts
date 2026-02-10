@@ -1,0 +1,7 @@
+
+export enum Cred {
+    NUMBER = '1234567890',
+    USERNAME = 'admin',
+    PASSWORD = 'admin123',
+    DOB = '1998-06-24'
+}

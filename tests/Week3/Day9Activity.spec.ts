@@ -11,7 +11,9 @@ test(`Create a Lead in TestLeaf CRM`, async ({page}) =>{
     await page.locator(`//input[@id='createLeadForm_companyName']`).fill(`TestLeaf`)
     await page.locator(`//input[@id='createLeadForm_firstName']`).fill(`Kumar`)
     await page.locator(`//input[@id='createLeadForm_lastName']`).fill(`M`)
+
     const dropdown = page.locator(`#createLeadForm_marketingCampaignId>option`)
+    
     const countdropdown = await dropdown.count() 
     console.log("The total number of dropdowns are: "+countdropdown);
     for(let i=0;i<countdropdown;i++){
