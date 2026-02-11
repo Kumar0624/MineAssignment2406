@@ -37,6 +37,8 @@ test(`Handling Multiple pages`,async ({page,context}) => {
     console.log(await allPages[1].title());
 
     console.log(await allPages[2].title());  
+
+    
     
     await  page.waitForTimeout(5000);
     

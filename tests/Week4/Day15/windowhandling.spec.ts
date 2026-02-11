@@ -29,6 +29,7 @@ test("interact with window handles concurrent", async({page,context}) =>{ // her
     await searchBox.fill("Phone");
     await searchBox.press("Enter");
     await page.waitForTimeout(3000);
+
     await Promise.all([ // Promise.all is a method which is going to wait for all the actions to complete
         context.waitForEvent('page'), // 
         page.locator(`(//div[contains(text(),"POCO")])[1]`).click()
@@ -48,13 +49,14 @@ test("interact with window handles concurrent", async({page,context}) =>{ // her
 test.only(`Handling Multiple pages`,async ({page,context}) => {
     
     await page.goto(`https://leafground.com/window.xhtml`);
-   
+    // Promise.all is a method which is going to wait for all the actions to complete
     await Promise.all([context.waitForEvent('page'),page.getByText(`Open Multiple`,{exact:true}).click()])
 
-    const allPages = context.pages();
+    const allPages = context.pages(); // pages() this is a method to basically capture the number of pages opened in the browser context
 
-    allPages[0].waitForLoadState
-    allPages[1].waitForLoadState
+    allPages[0].waitForLoadState()
+
+    allPages[1].waitForLoadState()
 
     console.log(allPages.length);
 

@@ -4,7 +4,7 @@ import testdata from '../testdata/testdata.json';
 
 test('handle date picker', async ({page}) =>{
     await page.goto(Cred.Date_URL,{waitUntil: 'load'})    
-    await page.getByLabel('Input: Number').fill(testdata.NUMBER) 
+    await page.getByLabel('Input: Number').fill(testdata.NUMBER)
     await page.getByLabel('Input: Text').fill(testdata.USERNAME)
     await page.getByLabel('Input: Password').fill(testdata.PASSWORD)
     await page.getByLabel('Input: Date').fill(testdata.DOB)
