@@ -19,7 +19,7 @@
 
    Model Alerts Non Interactable alerts
 
-   Non-Model alerts : These are the alerts which are generated using HTML tags like 
+  # Non-Model alerts : These are the alerts which are generated using HTML tags like 
    1. <div>
    2. <span>
    3. <popup> etc.,  Sweet alert is one of the example for Non-Model alert.

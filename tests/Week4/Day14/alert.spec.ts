@@ -7,14 +7,12 @@ test("Interact with alerts", async({page}) =>{
      page.on("dialog", async(alert) => {// Here alert is the reference variable for that particular alert popup
         console.log(`The alert message is: ${alert.message()}`); 
         console.log(`The alert type is: ${alert.type()}`);
-
         if(alert.type() === "confirm"){
             await alert.accept(); 
         } else if(alert.type() === "prompt"){
             await alert.accept("Kumar M"); // to enter text in prompt alert and accept
         } else{
-            await alert.dismiss(); // to dismiss the alert
-            
+            await alert.dismiss(); // to dismiss the alert    
         }   
     });
 
