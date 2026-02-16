@@ -26,8 +26,6 @@ test('print all frames count and title', async ({page}) =>{
     console.log(`The text inside the child frame is: ${text}`);
     expect(text).toContain("Hurray! You Clicked Me.");
     const allFrames = page.frames();
-    const frameCount = allFrames.length;
-    console.log(`Total number of frames on this page is: ${frameCount}`);
     for(let frame of allFrames){
         const title = await frame.title();
         console.log(`The title of the frame is: ${title}`);

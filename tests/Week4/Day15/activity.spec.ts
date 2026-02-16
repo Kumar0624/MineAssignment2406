@@ -3,7 +3,7 @@ import{test} from "@playwright/test"
 test("interact with window handles concurrent", async({page,context}) =>{ // here we are doing parallel execution
     console.log("Test started");
     await page.goto("https://www.flipkart.com/");
-    const searchBox = page.getByPlaceholder(`Search for Products, Brands and More`,{exact:true})
+    const searchBox = page.locator("(//input[@name='q'])[1]");
     await searchBox.fill("Phone");
     await searchBox.press("Enter");
     await page.waitForTimeout(3000);
@@ -17,29 +17,22 @@ test("interact with window handles concurrent", async({page,context}) =>{ // her
     console.log(`The title of the child page is: ${await allPages[1].title()}`); // 
     const mobileAmount = await allPages[1].locator(`(//div[contains(text(),"₹")])[1]`).innerText()
     console.log("The mobile Amount is "+ mobileAmount)
+    const timestamp = Date.now();
+    await page.screenshot({path:`screenshot/homepage_${timestamp}.png`})
     await  page.waitForTimeout(5000);
 });
+
+
 test(`Handling Multiple pages`,async ({page,context}) => {
-    
     await page.goto(`https://leafground.com/window.xhtml`);
-   
     await Promise.all([context.waitForEvent('page'),page.getByText(`Open Multiple`,{exact:true}).click()])
-
     const allPages = context.pages();
-
     allPages[0].waitForLoadState
     allPages[1].waitForLoadState
-
-    console.log(allPages.length);
-
+    console.log(allPages.length)
     console.log(await allPages[0].title());
-
     console.log(await allPages[1].title());
-
     console.log(await allPages[2].title());  
-
-    
-    
     await  page.waitForTimeout(5000);
     
  })
